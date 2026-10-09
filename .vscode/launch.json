@@ -1,0 +1,85 @@
+{
+  // Two ways to run PixelVault from VS Code:
+  // 1. "PixelVault (Aspire)" starts everything through the Aspire AppHost, like `dotnet run --project src/PixelVault.AppHost`.
+  //    Needs the C# Dev Kit extension.
+  // 2. "All services (no Aspire)" starts the six APIs and the React app directly, with the debugger attached to every API.
+  //    The single-service configurations below don't build first: run the "build" task (Ctrl+Shift+B) after code changes.
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "PixelVault (Aspire)",
+      "type": "dotnet",
+      "request": "launch",
+      "projectPath": "${workspaceFolder}/src/PixelVault.AppHost/PixelVault.AppHost.csproj"
+    },
+    {
+      "name": "Catalog API",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/PixelVault.Catalog.Api/bin/Debug/net10.0/PixelVault.Catalog.Api.dll",
+      "cwd": "${workspaceFolder}/src/PixelVault.Catalog.Api",
+      "env": { "ASPNETCORE_ENVIRONMENT": "Development", "ASPNETCORE_URLS": "http://localhost:5101" },
+      "console": "internalConsole"
+    },
+    {
+      "name": "Basket API",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/PixelVault.Basket.Api/bin/Debug/net10.0/PixelVault.Basket.Api.dll",
+      "cwd": "${workspaceFolder}/src/PixelVault.Basket.Api",
+      "env": { "ASPNETCORE_ENVIRONMENT": "Development", "ASPNETCORE_URLS": "http://localhost:5102" },
+      "console": "internalConsole"
+    },
+    {
+      "name": "Orders API",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/PixelVault.Orders.Api/bin/Debug/net10.0/PixelVault.Orders.Api.dll",
+      "cwd": "${workspaceFolder}/src/PixelVault.Orders.Api",
+      "env": { "ASPNETCORE_ENVIRONMENT": "Development", "ASPNETCORE_URLS": "http://localhost:5103" },
+      "console": "internalConsole"
+    },
+    {
+      "name": "Payment API",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/PixelVault.Payment.Api/bin/Debug/net10.0/PixelVault.Payment.Api.dll",
+      "cwd": "${workspaceFolder}/src/PixelVault.Payment.Api",
+      "env": { "ASPNETCORE_ENVIRONMENT": "Development", "ASPNETCORE_URLS": "http://localhost:5104" },
+      "console": "internalConsole"
+    },
+    {
+      "name": "Shipping API",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/PixelVault.Shipping.Api/bin/Debug/net10.0/PixelVault.Shipping.Api.dll",
+      "cwd": "${workspaceFolder}/src/PixelVault.Shipping.Api",
+      "env": { "ASPNETCORE_ENVIRONMENT": "Development", "ASPNETCORE_URLS": "http://localhost:5105" },
+      "console": "internalConsole"
+    },
+    {
+      "name": "Identity API",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/PixelVault.Identity.Api/bin/Debug/net10.0/PixelVault.Identity.Api.dll",
+      "cwd": "${workspaceFolder}/src/PixelVault.Identity.Api",
+      "env": { "ASPNETCORE_ENVIRONMENT": "Development", "ASPNETCORE_URLS": "http://localhost:5106" },
+      "console": "internalConsole"
+    },
+    {
+      "name": "Web (Vite)",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npm install; npm run dev",
+      "cwd": "${workspaceFolder}/src/web"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "All services (no Aspire)",
+      "configurations": ["Catalog API", "Basket API", "Orders API", "Payment API", "Shipping API", "Identity API", "Web (Vite)"],
+      "preLaunchTask": "build",
+      "stopAll": true
+    }
+  ]
+}

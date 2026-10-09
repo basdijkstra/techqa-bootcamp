@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/PixelVault.AppHost/PixelVault.AppHost.csproj" />
+    <Project Path="src/PixelVault.Basket.Api/PixelVault.Basket.Api.csproj" />
+    <Project Path="src/PixelVault.Catalog.Api/PixelVault.Catalog.Api.csproj" />
+    <Project Path="src/PixelVault.Identity.Api/PixelVault.Identity.Api.csproj" />
+    <Project Path="src/PixelVault.Orders.Api/PixelVault.Orders.Api.csproj" />
+    <Project Path="src/PixelVault.Payment.Api/PixelVault.Payment.Api.csproj" />
+    <Project Path="src/PixelVault.ServiceDefaults/PixelVault.ServiceDefaults.csproj" />
+    <Project Path="src/PixelVault.Shared/PixelVault.Shared.csproj" />
+    <Project Path="src/PixelVault.Shipping.Api/PixelVault.Shipping.Api.csproj" />
+  </Folder>
+</Solution>

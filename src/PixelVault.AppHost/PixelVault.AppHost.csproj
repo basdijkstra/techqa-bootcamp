@@ -1,0 +1,25 @@
+<Project Sdk="Aspire.AppHost.Sdk/13.6.1">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <!-- Plain "dotnet run" mode: no Aspire CLI, no HTTPS certificate trust step. -->
+    <AspireUseCliBundle>false</AspireUseCliBundle>
+    <NoWarn>$(NoWarn);ASPIRE010</NoWarn>
+    <UserSecretsId>c407c04d-2634-4c2c-b3d9-34682ea5ce5d</UserSecretsId>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Aspire.Hosting.JavaScript" Version="13.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PixelVault.Catalog.Api\PixelVault.Catalog.Api.csproj" />
+    <ProjectReference Include="..\PixelVault.Basket.Api\PixelVault.Basket.Api.csproj" />
+    <ProjectReference Include="..\PixelVault.Orders.Api\PixelVault.Orders.Api.csproj" />
+    <ProjectReference Include="..\PixelVault.Payment.Api\PixelVault.Payment.Api.csproj" />
+    <ProjectReference Include="..\PixelVault.Shipping.Api\PixelVault.Shipping.Api.csproj" />
+    <ProjectReference Include="..\PixelVault.Identity.Api\PixelVault.Identity.Api.csproj" />
+  </ItemGroup>
+
+</Project>
