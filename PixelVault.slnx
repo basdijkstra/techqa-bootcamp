@@ -12,5 +12,6 @@
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/PixelVault.IntegrationTests/PixelVault.IntegrationTests.csproj" />
+    <Project Path="tests/PixelVault.UnitTests/PixelVault.UnitTests.csproj" />
   </Folder>
 </Solution>
