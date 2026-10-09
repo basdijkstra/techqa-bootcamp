@@ -203,8 +203,9 @@ export function HomePage() {
 
 function GameCard({ game }: { game: GameSummary }) {
   return (
-    <li className="game-card" data-testid="game-card" data-game-id={game.id}>
-      <Link to={`/games/${game.slug}`} className="game-card-link" aria-label={game.title}>
+    <li className="game-card" data-testid="game-card" data-game-id={game.id} data-game-slug={game.slug}>
+      {/* No aria-label: the link's accessible name comes from the cover's "Cover art for ..." label. */}
+      <Link to={`/games/${game.slug}`} className="game-card-link" data-testid="game-cover-link">
         <GameCover title={game.title} primary={game.coverColorPrimary} secondary={game.coverColorSecondary} />
       </Link>
       <div className="game-card-body">
