@@ -30,8 +30,14 @@ public class FraudScorer : IFraudScorer
         "mailinator.com", "10minutemail.com", "guerrillamail.com", "tempmail.com", "trashmail.com"
     };
 
+    /// <exception cref="ArgumentNullException">The input or its list of previous attempts is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">The amount is zero or negative.</exception>
     public FraudAssessment Assess(FraudCheckInput input)
     {
+        ArgumentNullException.ThrowIfNull(input);
+        ArgumentNullException.ThrowIfNull(input.PreviousAttemptsWithCard);
+        ArgumentOutOfRangeException.ThrowIfNegativeOrZero(input.Amount);
+
         var score = 0;
         var reasons = new List<string>();
 
