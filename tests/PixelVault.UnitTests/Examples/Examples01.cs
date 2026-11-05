@@ -1,6 +1,7 @@
 using NUnit.Framework;
+using PixelVault.UnitTests.Examples.TestObjects;
 
-namespace PixelVault.UnitTests.Examples.TestObjects;
+namespace PixelVault.UnitTests.Examples;
 
 [TestFixture]
 public class Examples01
