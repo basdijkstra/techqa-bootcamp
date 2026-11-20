@@ -1,5 +1,4 @@
 using NUnit.Framework;
-using RestAssured.Logging;
 using static RestAssured.Dsl;
 
 namespace PixelVault.IntegrationTests.Examples;
