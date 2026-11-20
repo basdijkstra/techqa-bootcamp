@@ -23,5 +23,8 @@ jobs:
       - name: Build
         run: dotnet build PixelVault.slnx --no-restore --configuration Release
 
-      - name: Run unit tests
-        run: dotnet test tests/PixelVault.UnitTests --no-build --configuration Release
+      - name: Run unit tests (answers)
+        run: dotnet test tests/PixelVault.UnitTests --filter "FullyQualifiedName~PixelVault.UnitTests.Answers." --no-build --configuration Release
+
+      - name: Run integration tests (answers)
+        run: dotnet test tests/PixelVault.IntegrationTests --filter "FullyQualifiedName~PixelVault.IntegrationTests.Answers." --no-build --configuration Release
