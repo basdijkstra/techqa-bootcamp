@@ -1,0 +1,8 @@
+{
+  "stryker-config": {
+    "project": "PixelVault.Payment.Api.csproj",
+    "mutate": [ "**/Services/FraudScorer.cs" ],
+    "test-case-filter": "FullyQualifiedName~PixelVault.UnitTests.Answers",
+    "reporters": [ "html", "progress", "cleartext" ]
+  }
+}
