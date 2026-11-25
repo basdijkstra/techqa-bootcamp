@@ -16,6 +16,8 @@
     "exercises03": "playwright test tests/exercises/exercises03.spec.ts",
     "answers03": "playwright test tests/answers/answers03.spec.ts",
     "exercises04": "playwright test tests/exercises/exercises04.spec.ts",
-    "answers04": "playwright test tests/answers/answers04.spec.ts"
+    "answers04": "playwright test tests/answers/answers04.spec.ts",
+    "exercises05": "playwright test tests/exercises/exercises05.spec.ts",
+    "answers05": "playwright test tests/answers/answers05.spec.ts"
   }
 }
