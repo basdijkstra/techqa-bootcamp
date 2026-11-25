@@ -6,12 +6,21 @@ import { useBasket } from '../context/BasketContext';
 import { formatDate, formatPrice } from '../format';
 
 export function BasketPage() {
-  const { basket, isLoading, updateItem, removeItem, applyPromoCode, removePromoCode } = useBasket();
+  const { basket, isLoading, loadError, updateItem, removeItem, applyPromoCode, removePromoCode } = useBasket();
   const navigate = useNavigate();
   const [error, setError] = useState<unknown>(null);
   const [promoInput, setPromoInput] = useState('');
   const [promoError, setPromoError] = useState<unknown>(null);
   const [busy, setBusy] = useState(false);
+
+  if (!basket && loadError) {
+    return (
+      <div className="basket-page">
+        <h1>Your basket</h1>
+        <ErrorMessage error={loadError} testId="basket-error" />
+      </div>
+    );
+  }
 
   if (isLoading || !basket) return <Spinner label="Loading basket..." />;
 

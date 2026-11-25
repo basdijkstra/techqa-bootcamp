@@ -9,6 +9,8 @@ const BASKET_KEY = 'pv.basketId';
 interface BasketContextValue {
   basket: Basket | undefined;
   isLoading: boolean;
+  /** Set when the basket could not be loaded or created, e.g. because the Basket service returned an error. */
+  loadError: unknown;
   addItem: (gameId: number, quantity: number) => Promise<Basket>;
   updateItem: (gameId: number, quantity: number) => Promise<Basket>;
   removeItem: (gameId: number) => Promise<Basket>;
@@ -39,7 +41,7 @@ async function loadOrCreateBasket(): Promise<Basket> {
 
 export function BasketProvider({ children }: { children: ReactNode }) {
   const queryClient = useQueryClient();
-  const { data: basket, isLoading } = useQuery({ queryKey: ['basket'], queryFn: loadOrCreateBasket });
+  const { data: basket, isLoading, error: loadError } = useQuery({ queryKey: ['basket'], queryFn: loadOrCreateBasket });
 
   const update = useCallback(
     async (action: (basketId: string) => Promise<Basket>) => {
@@ -62,6 +64,7 @@ export function BasketProvider({ children }: { children: ReactNode }) {
   const value: BasketContextValue = {
     basket,
     isLoading,
+    loadError,
     addItem: (gameId, quantity) => update((id) => basketApi.addItem(id, gameId, quantity)),
     updateItem: (gameId, quantity) => update((id) => basketApi.updateItem(id, gameId, quantity)),
     removeItem: (gameId) => update((id) => basketApi.removeItem(id, gameId)),
