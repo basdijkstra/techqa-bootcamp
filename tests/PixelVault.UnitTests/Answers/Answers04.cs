@@ -71,4 +71,21 @@ public class Answers04
         Assert.That(result.DeclineCode, Is.EqualTo("FRAUD_SUSPECTED"));
         Assert.That(result.FraudScore, Is.EqualTo(70));
     }
+
+    [Test]
+    public async Task ChargeAsync_BlockedByFraudCheck_DoesNotChargeTheCard()
+    {
+        var processor = new SpyPaymentProcessor();
+        var paymentService = new SimplePaymentService(new FraudScorer(), processor);
+
+        var previousAttempts = new List<PaymentTransaction>
+        {
+            new() { Status = PaymentStatus.Declined, CreatedAt = DateTimeOffset.UtcNow.AddMinutes(-10) },
+            new() { Status = PaymentStatus.Declined, CreatedAt = DateTimeOffset.UtcNow.AddMinutes(-5) }
+        };
+
+        await paymentService.ChargeAsync(1250.00m, "player@example.com", "4242424242424242", previousAttempts);
+
+        Assert.That(processor.NumberOfCharges, Is.EqualTo(0));
+    }
 }
